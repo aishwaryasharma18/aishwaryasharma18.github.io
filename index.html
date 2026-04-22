@@ -17,7 +17,8 @@
       padding: 40px 20px;
     }
 
-    .card {
+    .card {opacity: 0;
+animation: fadeIn 1s forwards;
       background: white;
       margin: 20px auto;
       padding: 20px;
@@ -48,7 +49,11 @@
       color: #764ba2;
       font-weight: bold;
     }
-
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
   </style>
 </head>
 
