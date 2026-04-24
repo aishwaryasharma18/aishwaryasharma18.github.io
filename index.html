@@ -97,7 +97,9 @@ animation: fadeIn 1s forwards;
     <img style="display: block;-webkit-user-select: none;margin: auto;cursor: zoom-in;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src="https://raw.githubusercontent.com/aishwaryasharma18/aishwaryasharma18.github.io/refs/heads/main/WhatsApp%20Image%202026-04-21%20at%203.10.41%20PM.jpeg" width="386" height="636">
 
     <h1>Aishwarya Sharma</h1>
-    <p style="color:white;">Beginner Web Developer 🚀</p>
+    <p style="color:white;">
+      <span id="typing"></span>
+    </p>
   </div>
 
   <div class="card">
@@ -136,6 +138,19 @@ animation: fadeIn 1s forwards;
     class="btn"
     target="_blank">LinkedIn</a>
   </div>
+<script>
+  const text = "Beginner Web Developer 🚀";
+  let i = 0;
 
+  function typingEffect() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typingEffect, 50);
+    }
+  }
+
+  typingEffect();
+</script>
 </body>
 </html>
