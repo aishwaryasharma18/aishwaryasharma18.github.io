@@ -139,18 +139,36 @@ animation: fadeIn 1s forwards;
     target="_blank">LinkedIn</a>
   </div>
 <script>
-  const text = "Beginner Web Developer 🚀";
+  const texts = ["Web Developer 💻", "Learner 📚", "Future Engineer 🚀"];
   let i = 0;
+  let j = 0;
+  let currentText = "";
+  let isDeleting = false;
 
-  function typingEffect() {
-    if (i < text.length) {
-      document.getElementById("typing").innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typingEffect, 50);
+  function type() {
+    currentText = texts[i];
+    
+    if (!isDeleting) {
+      document.getElementById("typing").innerHTML = currentText.substring(0, j++);
+    } else {
+      document.getElementById("typing").innerHTML = currentText.substring(0, j--);
     }
+
+    if (j == currentText.length + 1) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
+
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % texts.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
   }
 
-  typingEffect();
+  type();
 </script>
 </body>
 </html>
