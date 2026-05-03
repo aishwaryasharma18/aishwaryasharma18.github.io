@@ -17,8 +17,16 @@
       padding: 40px 20px;
     }
 
-    .card {opacity: 0;
-animation: fadeIn 1s forwards;
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
       background: white;
       margin: 20px auto;
       padding: 20px;
@@ -214,5 +222,19 @@ animation: fadeIn 1s forwards;
   </div>
 
 </div>
+    <script>
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll", () => {
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    const trigger = window.innerHeight * 0.85;
+
+    if (cardTop < trigger) {
+      card.classList.add("show");
+    }
+  });
+});
+</script>
 </body>
 </html>
